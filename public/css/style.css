@@ -1,0 +1,164 @@
+/*
+Created by Kristina Turukhanova, Buguzov Akhmed, Ruslan Aliev, Isa Eldarhanov, Musa Djamiliev on 27.11.2016.
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, figure {margin: 0;padding: 0;border: 0;outline: 0;font-weight: inherit;font-style: inherit;font-size: 100%;font-family: inherit;vertical-align: baseline;}
+:focus {outline: 0;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+table {border-collapse: separate;border-spacing: 0;}
+caption, th, td {text-align: left;font-weight: normal;}
+blockquote:before, blockquote:after,q:before, q:after {content: "";}
+blockquote, q {quotes: "" "";}
+*:before, *:after, *{box-sizing: border-box;}
+/*****END*****/
+@font-face { font-family:'FontAwesome';src:url('fonts/fontawesome-webfont.eot?v=4.3.0');src:url('fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'),url('fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'),url('fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'),url('fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'),url('fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal;}/*ШРИФТ ДЛЯ ПОДДРЕЖКИ ИКОНОК*/
+@font-face { font-family:'OpenSans';src:url('fonts/OpenSans-Regular.ttf');}
+@font-face { font-family:'OpenSans-Bold';src:url('fonts/OpenSans-Bold.ttf');}
+@font-face { font-family:'OpenSans-Italic';src:url('fonts/OpenSans-Italic.ttf');}
+/****END****/
+
+/*
+@-moz-document url-prefix(""){}
+white-space: nowrap; Запрещаем перенос строк 
+text-overflow: ellipsis; многоточие, если текст не помещается
+*/
+
+::-webkit-input-placeholder {color:#2c3e50;}
+::-moz-placeholder {color:#2c3e50;}
+
+/*FONT ICO*/
+i[class^='ico']{font-family:'FontAwesome';  font-style: normal;font-weight: normal;}
+.ico_burg:after{content: "\f0c9";}/*бургер*/
+
+/*social link*/
+.ico_ok:after{content:   "\f264";}/*OK*/
+.ico_fb:after{content:   "\f082";}/*facebook*/
+.ico_vk:after{content:   "\f189";}/*vk*/
+.ico_insta:after{content: "\f16d";}/*insta*/
+.ico_twit:after{content: "\f099";}/*twit*/
+.ico_you:after{content: "\f167";}/*youtube*/
+
+
+.clr:after{content: ""; display: block; clear: both;}
+/*Burger*/
+.burger_menu{display: none;color:inherit !important;text-decoration: none !important; border: 1px solid #BBBBBB; padding: 2px 6px; border-radius: 5px;font-size: 25px;}
+
+
+html,body {width:100%;height:100%; }
+body{overflow-y: scroll; font-family:'OpenSans'; font-size: 16px; color:#2c3e50;}
+#wrapper { min-height:100%; position: relative; padding: 0 0 100px;}
+
+/*HEADER*/
+header{padding: 20px; width:1300px; margin: 0 auto;}
+header .logo {float:left; margin: 0 50px 0 0; }
+
+/*ГЛАВНОЕ МЕНЮ*/
+.main_menu{}
+.main_menu ul{margin: 20px 0 0;}
+.main_menu ul li{float:left; margin: 0 30px 0 0;}
+.main_menu ul li a{text-decoration: none;display: block; color:#2c3e50;}
+.main_menu ul li a:hover, .main_menu ul li a.active{text-decoration: underline;}
+
+/*search block*/
+.search {float:right;border-bottom: 1px solid#2c3e50;}
+.search p {margin: 0; overflow: hidden;}
+.search input[type="text"]{border:none; padding:10px; float: left;}
+.search input[type="submit"]{border:none; background: url("../img/search.png") no-repeat center; width: 20px; cursor: pointer; margin: 10px 0 0; }
+
+/*main_container*/
+#main_container{padding: 20px; width:1300px; margin: 0 auto;}
+
+/*lection_name*/
+.lection_name {margin: 0 0 40px;}
+.lection_name p{margin: 0; }
+.lection_name p:first-of-type{float:left; width: calc(100% - 150px);}
+.lection_name .date{float:right; margin: 10px 0 0;}
+.lection_name label, .recording_lection label{font-weight: normal; margin: 0;}
+.lection_name input[type="text"] {border:none; border-bottom: 1px solid#2c3e50; padding: 10px; margin: 0 0 0 20px; width: 70%;}
+
+/*recording_lection*/
+.recording_lection {margin: 0 0 40px;}
+.recording_lection p{margin: 0; float:left; }
+.recording_lection p input[type="text"] {border:none; border-bottom: 1px solid #2c3e50; padding: 10px; margin: 0 0 0 20px; width: 300px;}
+
+/*record_but*/
+.recording_lection .record_but{float:right; margin: 0;}
+.record_but li{float:left; margin: 0 20px 0 0;}
+.record_but li:last-child{margin:0;}
+.record_but li input[type="button"]{cursor: pointer; padding:15px 20px 15px 40px; background-color: #2c3e50; border-radius: 23px; color:#fff; border:none; transition: 1s;}
+.record_but li input[type="button"]:hover{background-color:#F95F5E;}
+.record_but li input[disabled]{cursor: no-drop;}
+
+.record_but input[disabled].ico1 {background-color:#F95F5E;}
+.ico1{background-image: url("../img/ico1.png"); background-position: left 20px center; background-repeat: no-repeat;}
+.ico2{background-image: url("../img/ico2.png"); background-position: left 20px center; background-repeat: no-repeat;}
+.ico3{background-image: url("../img/ico3.png"); background-position: left 20px center; background-repeat: no-repeat;}
+.ico4{background-image: url("../img/ico4.png"); background-position: left 20px center; background-repeat: no-repeat;}
+
+/*record_text*/
+.record_text {margin: 0 0 40px;}
+.record_text textarea {border: 1px solid #c5c5c5; border-radius: 5px; padding: 10px; resize: vertical; width: 100%; min-height: 400px;}
+
+
+/*all_lections*/
+
+.all_lections {}
+.all_lections aside{width: 398px; border:1px solid #c5c5c5; border-radius: 5px; margin: 0 33px 33px 0; padding: 10px; float: left;}
+.all_lections aside:nth-child(3n) {margin-right: 0;}
+.all_lections aside h3{white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-size: 24px; font-family: "Open Sans Extrabold"; margin: 0 0 10px;}
+.all_lections aside p{margin: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.all_lections aside a {color:inherit;}
+.all_lections aside .lect_txt{margin: 0 0 10px;}
+.all_lections aside .lector_name{float:left; width: 62%;}
+.all_lections aside .date_lect{float: right; width: 38%; text-align: right;}
+
+
+/*FOOTER*/
+footer{background: #2B3D4F; color:#fff; position: absolute; width: 100%; bottom:0; left:0;}
+#footer{width:1300px; margin: 0 auto; padding: 15px 20px; background: #2B3D4F;}
+#footer .copy {float: left; margin: 0 40px 0 0;}
+#footer .copy + p {margin: 10px 0 0;}
+
+
+/*****ADAPTIVE****/
+@media only screen and (max-width: 1170px){ }
+
+
+
+/*****NPROGRESS PLUGIN******/
+
+/* Make clicks pass-through */
+#nprogress {pointer-events: none;}
+#nprogress .bar {background: #29d;position: fixed;z-index: 1031;top: 0;left: 0;width: 100%;height: 2px;}
+/* Fancy blur effect */
+#nprogress .peg {display: block;position: absolute;right: 0px;width: 100px;height: 100%;box-shadow: 0 0 10px #29d, 0 0 5px #29d;opacity: 1.0;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+}
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {display: block;position: fixed;z-index: 1031;top: 15px;right: 15px;}
+#nprogress .spinner-icon {width: 18px;height: 18px;box-sizing: border-box;border: solid 2px transparent;border-top-color: #29d;border-left-color: #29d;border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+}
+.nprogress-custom-parent {overflow: hidden;position: relative;}
+.nprogress-custom-parent #nprogress .spinner,.nprogress-custom-parent #nprogress .bar {position: absolute;}
+
+@-webkit-keyframes nprogress-spinner {
+    0%   { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.status {
+	text-align: center;
+	font-size: 26px;
+	padding: 10px 0;
+	color: #2c3e50;
+	background-color: rgba(120, 212, 101, 0.18);
+	position: relative;
+	top: -50px;
+}

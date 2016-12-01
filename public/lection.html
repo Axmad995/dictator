@@ -1,0 +1,111 @@
+<!--
+ Created by Kristina Turukhanova, Buguzov Akhmed, Ruslan Aliev, Isa Eldarhanov, Musa Djamiliev on 27.11.2016.
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <title>DICTATOR - Лекция №1</title>
+
+    <meta charset="utf-8"/>
+    <meta name="keywords" content="DICTATOR" />
+    <meta name="description" content="DICTATOR Лекции в аудио" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link href="favicon.ico?ver=2" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/> <!--main css-->
+
+    <!--yandex-->
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://webasr.yandex.net/jsapi/v1/webspeechkit.js" type="text/javascript"></script>
+    <script src="https://webasr.yandex.net/jsapi/v1/webspeechkit-settings.js" type="text/javascript"></script>
+    <script src="js/speech_recognition.js" type="text/javascript"></script>
+    <!--yandex-->
+
+    <script src="js/nprogress/nprogress.js"></script> <!-- nprogress -->
+
+    <script src="js/js.js"></script> <!-- js scripts -->
+
+</head>
+<body>
+<script>
+    NProgress.start();
+</script>
+
+<div id="wrapper">
+
+    <header class="clr">
+        <a class="logo" href="index.html"><img title="DICTATOR" src="img/logo.png" alt=""></a>
+
+        <div class="search">
+            <form action="#">
+                <p>
+                    <input type="text" placeholder="Поиск..."/>
+                    <input type="submit" value=""/>
+                </p>
+            </form>
+        </div><!--search-->
+
+        <nav class="main_menu">
+            <ul class="clr">
+                <li><a href="index.html">Главная</a></li>
+                <li><a class="active" href="lections.html">Список лекций</a></li>
+            </ul>
+        </nav><!--main_menu-->
+    </header> <!-- header -->
+
+    <div id="main_container">
+
+
+
+    </div> <!--#main_container-->
+
+    <footer>
+        <div id="footer" class="clr">
+
+            <a class="copy" href="javascript:void(0);"><img src="img/dgunh.png" alt=""/></a>
+            <p>
+                СДЕЛАНО В ДГУНХ <br /> <br />
+                ВЫПОЛНИЛИ:  Алиев Руслан,  Бугузов Ахмед,  Джамилиев Муса,  Тюрюханова Кристина,   Эльдарханов Иса.
+            </p>
+        </div> <!--#footer-->
+    </footer> <!-- footer -->
+
+</div> <!-- #wrapper -->
+
+<script>
+    NProgress.done();
+</script>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBSNs854HpoUH49Mrqoe57r0Ju-YFhyR5w",
+        authDomain: "speechrecognizer-53a1d.firebaseapp.com",
+        databaseURL: "https://speechrecognizer-53a1d.firebaseio.com",
+        storageBucket: "speechrecognizer-53a1d.appspot.com",
+        messagingSenderId: "301488348586"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+    /*Достать лекцию*/
+    var loc = location.href;
+    var id = loc.split("id=")[1];
+    var ref = firebase.database().ref("/lections/"+id);
+    ref.on("value", function(snapshot) {
+        $("#main_container").empty();
+        var data = snapshot.val();
+        var article = "<div class='lection_name clr'><p><label for='lection_name'>Название лекции:</label><input type='text' name=' id='lection_name' placeholder='Программная инженерия...' value='"+data["name"]+"'/></p><p class='date'>Дата: <span>"+data["dataLec"]+"</span></p></div><div class='record_text'><div class='recording_lection'><p><label for='lector_name'>Автор:</label><input id='lector_name' type='text' value='"+data["lector"]+"'/></p><br><br></div><textarea id='text_field'>"+data["text"]+"</textarea></div>"
+        $("#main_container").append(article);
+
+    });
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css"/> <!-- bootstrap css -->
+
+</body>
+</html>
