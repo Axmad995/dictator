@@ -23,7 +23,7 @@
     <!--yandex-->
 
     <script src="js/nprogress/nprogress.js"></script> <!-- nprogress -->
-
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
     <script src="js/js.js"></script> <!-- js scripts -->
 
 </head>
@@ -38,10 +38,10 @@
         <a class="logo" href="index.html"><img title="DICTATOR" src="img/logo.png" alt=""></a>
 
         <div class="search">
-            <form action="#">
+            <form action="search.html" method="GET" id="form_search">
                 <p>
-                    <input type="text" placeholder="Поиск..."/>
-                    <input type="submit" value=""/>
+                    <input type="text" name="search" id="search_input" placeholder="Поиск..."/>
+                    <input type="submit" value="" id="search_go" />
                 </p>
             </form>
         </div><!--search-->
@@ -78,12 +78,7 @@
 <script>
     NProgress.done();
 </script>
-
-
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-
 <script>
-    // Initialize Firebase
     var config = {
         apiKey: "AIzaSyBSNs854HpoUH49Mrqoe57r0Ju-YFhyR5w",
         authDomain: "speechrecognizer-53a1d.firebaseapp.com",
@@ -93,7 +88,7 @@
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-    /*Достать лекции*/
+     /*Достать лекции*/
     var ref = firebase.database().ref("/lections/");
     ref.on("value", function(snapshot) {
         $(".all_lections").empty();
@@ -107,7 +102,14 @@
             });
         }
     });
-
+    $("#search_go").on("click", function(){
+        var value = "";
+        $.when(value = $("#search_input").val().trim())
+        .then(function(){
+            $("#search_input").val(value);
+            $("#form_search").submit();
+        })
+    });
 </script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css"/> <!-- bootstrap css -->

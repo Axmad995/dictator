@@ -5,7 +5,7 @@
 <html lang="ru">
 <head>
 
-    <title>DICTATOR - Лекция №1</title>
+    <title>DICTATOR - Список лекций</title>
 
     <meta charset="utf-8"/>
     <meta name="keywords" content="DICTATOR" />
@@ -55,8 +55,10 @@
     </header> <!-- header -->
 
     <div id="main_container">
-
-
+        <h3>Результаты поиска по запросу: <span id="search_item"></span></h3>
+        <section class="all_lections clr">
+           
+        </section><!--all_lections-->
 
     </div> <!--#main_container-->
 
@@ -76,6 +78,9 @@
 <script>
     NProgress.done();
 </script>
+
+
+
 <script>
     var config = {
         apiKey: "AIzaSyBSNs854HpoUH49Mrqoe57r0Ju-YFhyR5w",
@@ -86,25 +91,40 @@
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-    /*Достать лекцию*/
     var loc = location.href;
-    var id = loc.split("id=")[1];
-    var ref = firebase.database().ref("/lections/"+id);
+    var search = decodeURI(loc.split("search=")[1].replace('+', " "));
+    $("#search_item").html('"'+search+'"');
+    /*Достать лекции*/
+    var ref = firebase.database().ref("/lections/");
+   
     ref.on("value", function(snapshot) {
-        $("#main_container").empty();
-        var data = snapshot.val();
-        var article = "<div class='lection_name clr'><p><label for='lection_name'>Название лекции:</label><input type='text' name=' id='lection_name' placeholder='Программная инженерия...' value='"+data["name"]+"'/></p><p class='date'>Дата: <span>"+data["dataLec"]+"</span></p></div><div class='record_text'><div class='recording_lection'><p><label for='lector_name'>Автор:</label><input id='lector_name' type='text' value='"+data["lector"]+"'/></p><br><br></div><textarea id='text_field'>"+data["text"]+"</textarea></div>"
-        $("#main_container").append(article);
+        $(".all_lections").empty();
+      
+        for (lection in snapshot.val()) {
+            var xRef = firebase.database().ref("/lections/"+lection+"/");
 
-    });
-    $("#search_go").on("click", function(){
+            xRef.once("value", function(xsnapshot) {
+                var data = xsnapshot.val();
+                if (data["name"].toLowerCase().indexOf(search.toLowerCase().trim()) + 1) {
+                    var article = "<aside> <h3><a href='lection.html?id="+lection+"'>"+data["name"]+"</a></h3><p class='lect_txt'>"+data["text"]+"</p><div class='clr'><p class=lector_name>"+data["lector"]+"</p><p class='date_lect'>Дата: <span>"+data["dataLec"]+"</span></p></div></aside>";
+
+                    $(".all_lections").append(article);
+                   
+                }
+            });
+        }
+    })
+  
+   $("#search_go").on("click", function(){
         var value = "";
         $.when(value = $("#search_input").val().trim())
         .then(function(){
             $("#search_input").val(value);
             $("#form_search").submit();
         })
-    });
+    }); 
+
+    
 </script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css"/> <!-- bootstrap css -->
