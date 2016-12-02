@@ -93,7 +93,7 @@
     ref.on("value", function(snapshot) {
         $("#main_container").empty();
         var data = snapshot.val();
-        var article = "<div class='lection_name clr'><p><label for='lection_name'>Название лекции:</label><input type='text' name=' id='lection_name' placeholder='Программная инженерия...' value='"+data["name"]+"'/></p><p class='date'>Дата: <span>"+data["dataLec"]+"</span></p></div><div class='record_text'><div class='recording_lection'><p><label for='lector_name'>Автор:</label><input id='lector_name' type='text' value='"+data["lector"]+"'/></p><br><br></div><textarea id='text_field'>"+data["text"]+"</textarea></div>"
+        var article = "<div class='lection_name clr'><p><label for='lection_name'>Название лекции:</label><input type='text' name=' id='lection_name' placeholder='Программная инженерия...' value='"+data["name"]+"'/></p><p class='date'>Дата: <span>"+data["dataLec"]+"</span></p></div><div class='record_text'><div class='recording_lection'><p><label for='lector_name'>Автор:</label><input id='lector_name' type='text' value='"+data["lector"]+"'/></p><br><br></div><textarea id='text_field'>"+data["text"]+"</textarea></div>"  + "<input class='del_lection' type='button' value='Удалить лекцию' id='del_'/>";
         $("#main_container").append(article);
 
     });
