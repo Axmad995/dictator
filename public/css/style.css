@@ -154,3 +154,5 @@ footer{background: #2B3D4F; color:#fff; position: absolute; width: 100%; bottom:
     100% { transform: rotate(360deg); }
 }
 .status {text-align: center;font-size: 26px;padding: 10px 0;color: #2c3e50;background-color: rgba(120, 212, 101, 0.4);position: fixed;top: -50px; width:100%;}
+.del_lection {background-color: #2c3e50; border: medium none; border-radius: 23px; color: #fff; cursor: pointer; padding: 15px 20px; transition: all 1s ease 0s; margin: 0 0 40px;}
+.del_lection:hover {background-color: #F95F5E;}
