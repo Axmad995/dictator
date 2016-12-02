@@ -153,12 +153,4 @@ footer{background: #2B3D4F; color:#fff; position: absolute; width: 100%; bottom:
     0%   { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-.status {
-	text-align: center;
-	font-size: 26px;
-	padding: 10px 0;
-	color: #2c3e50;
-	background-color: rgba(120, 212, 101, 0.18);
-	position: relative;
-	top: -50px;
-}
+.status {text-align: center;font-size: 26px;padding: 10px 0;color: #2c3e50;background-color: rgba(120, 212, 101, 0.4);position: fixed;top: -50px; width:100%;}
